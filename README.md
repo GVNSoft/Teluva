@@ -3,10 +3,11 @@ Internal study code for react js and redux.
 (Originals from https://github.com/raineroviir/react-redux-socketio-chat)
 
 ## Use Guide
-
-$ git clone https://github.com/GVNSoft/Teluva.git
-$ cd Teluva
-$ npm install
+```
+git clone https://github.com/GVNSoft/Teluva.git
+cd Teluva
+npm install
+```
 
 ### Setting up MongoDB
 
