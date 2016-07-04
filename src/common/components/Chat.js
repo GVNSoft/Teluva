@@ -149,21 +149,28 @@ export default class Chat extends Component {
     );
     return (
       <div style={{margin: '0', padding: '0', height: '100%', width: '100%', display: '-webkit-box'}}>
-        {screenWidth < 500 ? mobileNav : bigNav }
+        {/*screenWidth < 500 ? mobileNav : bigNav*/ }
+        
         <div className="main">
           <header style={{background: '#FFFFFF', color: 'black', flexGrow: '0', order: '0', fontSize: '2.3em', paddingLeft: '0.2em'}}>
             <div>
             {activeChannel}
             </div>
           </header>
+
           {PrivateMessageModal}
+          
+          {/* Message List */}
           <ul style={{wordWrap: 'break-word', margin: '0', overflowY: 'auto', padding: '0', paddingBottom: '1em', flexGrow: '1', order: '1'}} ref="messageList">
             {filteredMessages.map(message =>
               <MessageListItem handleClickOnUser={::this.handleClickOnUser} message={message} key={message.id} />
             )}
           </ul>
+
+          {/* Text Input form */}
           <MessageComposer socket={socket} activeChannel={activeChannel} user={user} onSave={::this.handleSave} />
         </div>
+
         <footer style={{fontSize: '1em', position: 'fixed', bottom: '0.2em', left: '21.5rem', color: '#000000', width: '100%', opacity: '0.5'}}>
           {typers.length === 1 &&
             <div>

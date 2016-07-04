@@ -12,7 +12,6 @@ const initialState = window.__INITIAL_STATE__;
 const store = configureStore(initialState);
 const rootElement = document.getElementById('react');
 
-
 ReactDOM.render(
   <Provider store={store}>
     <div style={{height: '100%'}}>

@@ -7,11 +7,11 @@ import { connect } from 'react-redux';
 import io from 'socket.io-client';
 
 const socket = io('', { path: '/api/chat' });
-const initialChannel = 'Lobby'; // NOTE: I hard coded this value for my example.  Change this as you see fit
+const initialChannel = 'KBS'; // NOTE: I hard coded this value for my example.  Change this as you see fit
 
 class ChatContainer extends Component {
   componentWillMount() {
-    const { dispatch, user } = this.props;
+    const { dispatch, user, channel } = this.props;
     if(!user.username) {
       dispatch(receiveAuth());
     }
@@ -19,6 +19,7 @@ class ChatContainer extends Component {
     dispatch(actions.fetchChannels(user.username));
   }
   render() {
+    console.log(this.props);
     return (
       <Chat {...this.props} socket={socket} />
     );
@@ -29,8 +30,7 @@ ChatContainer.propTypes = {
   user: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   channels: PropTypes.array.isRequired,
-  activeChannel: PropTypes.string.isRequired,
-  typers: PropTypes.array.isRequired
+  activeChannel: PropTypes.string.isRequired
 }
 
 function mapStateToProps(state) {
@@ -38,7 +38,8 @@ function mapStateToProps(state) {
       messages: state.messages.data,
       channels: state.channels.data,
       activeChannel: state.activeChannel.name,
-      user: state.auth.user,
+      //user: state.auth.user,
+      user: 'Test-User',
       typers: state.typers,
       screenWidth: state.environment.screenWidth
   }

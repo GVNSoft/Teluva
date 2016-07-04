@@ -3,10 +3,12 @@ import React from 'react';
 
 import SignIn from './components/SignIn';
 import ChatContainer from './containers/ChatContainer';
+import ChannelContainer from './containers/ChannelContainer';
 import SignUp from './components/SignUp';
 import WelcomePage from './components/WelcomePage';
 import App from './containers/App';
 import {checkAuth} from './actions/authActions';
+import ChannelList from './components/ChannelList'
 
 const requireAuth = (nextState, replace) => {
   if(!checkAuth()) {
@@ -15,7 +17,8 @@ const requireAuth = (nextState, replace) => {
 }
 const Routes = (
   <Route path="/" component={App}>
-    <IndexRoute component={WelcomePage} />
+    <IndexRoute component={ChannelContainer} />
+    <Route path="/channel" component={ChannelContainer} />
     <Route path="/welcome" component={WelcomePage} />
     <Route path="/signin" component={SignIn} />
     <Route path="/signup" component={SignUp} />

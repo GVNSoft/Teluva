@@ -152,9 +152,14 @@ export default class Channels extends Component {
         <div>
           <ul style={{display: 'flex', flexDirection: 'column', listStyle: 'none', margin: '0', overflowY: 'auto', padding: '0'}}>
             {filteredChannels.map(channel =>
-              <ChannelListItem  style={{paddingLeft: '0.8em', background: '#2E6DA4', height: '0.7em'}} messageCount={messages.filter(msg => {
-                return msg.channelID === channel.name;
-              }).length} channel={channel} key={channel.id} onClick={::this.handleChangeChannel} />
+              <ChannelListItem
+                style={{paddingLeft: '0.8em', background: '#2E6DA4', height: '0.7em'}}
+                messageCount={messages.filter(msg => {
+                  return msg.channelID === channel.name;
+                }).length} 
+                channel={channel}
+                key={channel.id}
+                onClick={::this.handleChangeChannel} />
               )}
           </ul>
           {moreChannelsBoolean && <a onClick={::this.openMoreChannelsModal} style={{'cursor': 'pointer', 'color': '#85BBE9'}}> + {channels.length - 8} more...</a>}

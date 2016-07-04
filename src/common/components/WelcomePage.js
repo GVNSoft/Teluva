@@ -31,13 +31,13 @@ class WelcomePage extends Component {
     dispatch(welcomePage(username));
     this.setState({ username: '' });
   }
-  render() {
+  render() { 
     const {screenWidth} = this.props;
     if(screenWidth < 500) {
       return (
         <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
           <header style={{textAlign: 'center'}}>
-            <p>Welcome to React Redux Socket.io Chat</p>
+            <p>Black Milk Tea</p>
             <p>This is an open source chat program.</p>
           </header>
           <main>
@@ -72,7 +72,7 @@ class WelcomePage extends Component {
     return (
       <div>
         <header style={{display: 'flex', justifyContent: 'center', flexGrow: '0', order: '0'}}>
-          <div style={{justifyContent: 'center'}}><p style={{fontSize: '1.5em', marginRight: '1em'}}>Welcome to React Redux Socket.io Chat</p>
+          <div style={{justifyContent: 'center'}}><p style={{fontSize: '1.5em', marginRight: '1em'}}>Black Milk Tea</p>
            <p>
           This is an open source chat program.
           </p>
