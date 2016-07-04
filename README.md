@@ -1,20 +1,16 @@
-[![Circle CI](https://circleci.com/gh/raineroviir/react-redux-socketio-chat.svg?style=svg)](https://circleci.com/gh/raineroviir/react-redux-socketio-chat)
-
-# React-redux-socketio-chat
-
-![alt tag](ReadmeVideo.gif)
-To see the live version of the app go to http://slackclone.herokuapp.com
+# Teluva
+Internal study code for react js and redux.
+(Originals from https://github.com/raineroviir/react-redux-socketio-chat)
 
 ## Use Guide
 
-First off, clone the repository and then `cd react-redux-socketio-chat`and `npm install`
-
-You can create channels with the + sign on the nav bar on the left.
-If you click on a user's name to send him a private message (opens a private channel)
+$ git clone https://github.com/GVNSoft/Teluva.git
+$ cd Teluva
+$ npm install
 
 ### Setting up MongoDB
 
-Note: You need MongoDB set up and running to run the code locally. [Installation instructions](https://docs.mongodb.org/manual/installation/)
+You need MongoDB set up and running to run the code locally. [Installation instructions](https://docs.mongodb.org/manual/installation/)
 
 Once you've installed MongoDB start up the MongoDB server in a new terminal with the following commands:
 
@@ -47,14 +43,3 @@ npm run build
 npm start
 ```
 And then point your browser to `localhost:3000`
-
-## Helpful Resources and Inspiring Projects
-
-* Erikras' universal redux example: https://github.com/erikras/react-redux-universal-hot-example
-* The facebook react flux-chat example: https://github.com/facebook/flux/tree/master/examples/flux-chat
-* The awesome community of reactiflux https://discordapp.com/channels/102860784329052160/102860784329052160
-
-## Todos
-* small profile page for users
-* implement reselect
-* implement async-props
