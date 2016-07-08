@@ -4,10 +4,9 @@ var bodyparser = require('body-parser');
 module.exports = function(router) {
   router.use(bodyparser.json());
 
-  // deprecating this route since it just gets all channels
   router.get('/channels', function(req, res) {
 
-    Channel.find({},{name: 1, id:1, _id:0}, function(err, data) {
+    Channel.find({},{name: 1, onair:1, _id:0}, function(err, data) {
       if(err) {
         console.log(err);
         return res.status(500).json({msg: 'internal server error'});

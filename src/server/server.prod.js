@@ -22,7 +22,7 @@ const app = express();
 
 //set env vars
 process.env.MONGOLAB_URI = process.env.MONGOLAB_URI || 'mongodb://localhost/chat_dev';
-process.env.PORT = process.env.PORT || 3000;
+process.env.PORT = process.env.PORT || 80;
 
 // connect our DB
 mongoose.connect(process.env.MONGOLAB_URI);

@@ -13,7 +13,7 @@ export default class ChannelList extends Component {
      }
 
      changeActiveChannel(event1) {
-        const { dispatch } = this.props;
+        const { dispatch, channels } = this.props;
 
         const newChannel = {
           name: event1,
@@ -21,7 +21,7 @@ export default class ChannelList extends Component {
           private: false
         };
 
-         dispatch(actions.createChannel(newChannel));
+         //dispatch(actions.createChannel(newChannel));
          //socket.emit('new channel', newChannel);
          dispatch(actions.changeChannel(newChannel));
      }

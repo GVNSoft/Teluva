@@ -63,10 +63,10 @@ export function welcomePage(username) {
   };
 }
 
-export function fetchChannels(user) {
+export function fetchChannels() {
   return dispatch => {
     dispatch(requestChannels())
-    return fetch(`/api/channels/${user}`)
+    return fetch(`/api/channels`)
       .then(response => response.json())
       .then(json => dispatch(receiveChannels(json)))
       .catch(error => {throw error});

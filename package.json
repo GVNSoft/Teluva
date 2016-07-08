@@ -60,6 +60,7 @@
     "webpack-isomorphic-tools": "^0.8.8"
   },
   "dependencies": {
+    "async": "^2.0.0-rc.6",
     "babel-core": "^6.3.26",
     "babel-loader": "^6.2.0",
     "babel-polyfill": "^6.3.14",
