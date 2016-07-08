@@ -12,7 +12,6 @@ class ChannelContainer extends Component {
 
   }
   render() {
-    console.log(this.props);
     return (
       <ChannelList {...this.props} />
     );

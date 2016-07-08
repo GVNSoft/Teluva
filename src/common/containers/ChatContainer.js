@@ -19,7 +19,6 @@ class ChatContainer extends Component {
     dispatch(actions.fetchChannels(user.username));
   }
   render() {
-    console.log(this.props);
     return (
       <Chat {...this.props} socket={socket} />
     );

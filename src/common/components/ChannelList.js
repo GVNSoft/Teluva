@@ -1,25 +1,21 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import { Button } from 'react-bootstrap';
+import ChannelListItem from './ChannelListItem';
 import * as actions from '../actions/actions';
 
 export default class ChannelList extends Component {
 
     static propTypes = {
+      channels: PropTypes.array.isRequired,
+      dispatch: PropTypes.func.isRequired
     };
 
      componentDidMount() {
         
      }
 
-     changeActiveChannel(event1) {
-        const { dispatch, channels } = this.props;
-
-        const newChannel = {
-          name: event1,
-          id: Date.now(),
-          private: false
-        };
+     changeActiveChannel(newChannel) {
+        const { dispatch } = this.props;
 
          //dispatch(actions.createChannel(newChannel));
          //socket.emit('new channel', newChannel);
@@ -27,11 +23,19 @@ export default class ChannelList extends Component {
      }
 
     render() {
+      const { channels } = this.props;
+
       return (
         <div>
             <h1>Channel List</h1>
             <ul style={{display: 'flex', flexDirection: 'column', listStyle: 'none', margin: '0', overflowY: 'auto', padding: '0'}}>
-              <Link to='/chat'>
+              {channels.map(channel =>
+                <ChannelListItem
+                  style={{paddingLeft: '0.8em', background: '#2E6DA4', height: '0.7em'}}
+                  channel={channel}
+                  onClick={::this.changeActiveChannel} />
+              )}
+{/*              <Link to='/chat'>
                   <li style={{textAlign: 'left', cursor: 'pointer', marginLeft: '2em'}}
                             onClick={() => { this.changeActiveChannel('KBS') }}>
                     <h5>KBS</h5> 
@@ -58,7 +62,7 @@ export default class ChannelList extends Component {
                     <h5>JTBC</h5>
                   </li>
               </Link>
-              
+             */}         
             </ul>
         </div>
       );

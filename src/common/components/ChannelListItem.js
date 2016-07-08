@@ -1,9 +1,21 @@
 import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 const ChannelListItem = (props) => {
-  const { channel: selectedChannel, onClick, channel } = props;
+  const { onClick, channel } = props;
+
+  return (
+    <Link to='/chat'>
+        <li style={{textAlign: 'left', cursor: 'pointer', marginLeft: '2em'}}
+               onClick= {() => onClick(channel)}>
+          <h5> { channel.name } </h5> 
+        </li>
+    </Link>
+   );
+
+  /*const { channel: selectedChannel, onClick, channel } = props;
   return (
     <Button bsSize="xsmall" bsStyle="primary" >
       <a className={classnames({ selected: channel === selectedChannel })}
@@ -14,7 +26,7 @@ const ChannelListItem = (props) => {
         </li>
       </a>
     </Button>
-  );
+  );*/
 }
 
 ChannelListItem.propTypes = {
