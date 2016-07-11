@@ -23,7 +23,7 @@ export default class ChannelList extends Component {
      }
 
     render() {
-      const { channels } = this.props;
+      const { channels, onAir } = this.props;
 
       return (
         <div>

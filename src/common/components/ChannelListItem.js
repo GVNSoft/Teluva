@@ -5,12 +5,14 @@ import { Link } from 'react-router';
 
 const ChannelListItem = (props) => {
   const { onClick, channel } = props;
+  console.log(props);
 
   return (
     <Link to='/chat'>
         <li style={{textAlign: 'left', cursor: 'pointer', marginLeft: '2em'}}
                onClick= {() => onClick(channel)}>
-          <h5> { channel.name } </h5> 
+          <h4> { channel.name } </h4> 
+          <h5> { channel.onair } </h5>
         </li>
     </Link>
    );
