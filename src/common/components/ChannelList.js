@@ -23,7 +23,7 @@ export default class ChannelList extends Component {
      }
 
     render() {
-      const { channels, onAir } = this.props;
+      const { channels } = this.props;
 
       return (
         <div>
@@ -33,6 +33,7 @@ export default class ChannelList extends Component {
                 <ChannelListItem
                   style={{paddingLeft: '0.8em', background: '#2E6DA4', height: '0.7em'}}
                   channel={channel}
+                  key={channel.name}
                   onClick={::this.changeActiveChannel} />
               )}
 {/*              <Link to='/chat'>
