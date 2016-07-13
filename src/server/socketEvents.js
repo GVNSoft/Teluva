@@ -9,7 +9,7 @@ exports = module.exports = function(io) {
       socket.leave(channel)
     })
     socket.on('join channel', function(channel) {
-      socket.join(channel.name)
+      socket.join(channel)
     })
     socket.on('new message', function(msg) {
       socket.broadcast.to(msg.channelID).emit('new bc message', msg);

@@ -11,8 +11,6 @@ module.exports = function(router) {
         console.log(err);
         return res.status(500).json({msg: 'internal server error'});
       }
-      console.log('/channels is called. Return Data is ...');
-      console.log(data);
       res.json(data);
     });
   });

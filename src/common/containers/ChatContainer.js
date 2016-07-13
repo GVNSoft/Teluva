@@ -9,37 +9,46 @@ import io from 'socket.io-client';
 const socket = io('', { path: '/api/chat' });
 const initialChannel = 'KBS'; // NOTE: I hard coded this value for my example.  Change this as you see fit
 
+
+let idCounter = 0;
+const tmpUser =   
+{
+    username: 'Anonymous' + Math.floor((Math.random() * 100) + 1),
+    id: idCounter++,
+    socketID: null
+}
+
 class ChatContainer extends Component {
   componentWillMount() {
-    const { dispatch, user, channel } = this.props;
-    if(!user.username) {
+    const { dispatch, activeChannel } = this.props;
+
+    console.log('[Chat_Container] activeChannel : ', activeChannel);
+    /*if(!user.username) {
       dispatch(receiveAuth());
-    }
-    dispatch(actions.fetchMessages(initialChannel));
-    dispatch(actions.fetchChannels(user.username));
+    }*/
+    //dispatch(actions.fetchMessages(initialChannel));
+    //dispatch(actions.fetchChannels(user.username));
   }
   render() {
     return (
-      <Chat {...this.props} socket={socket} />
+      <Chat {...this.props} socket={socket} user={tmpUser} />
     );
   }
 }
 ChatContainer.propTypes = {
-  messages: PropTypes.array.isRequired,
-  user: PropTypes.object.isRequired,
+  //user: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
-  channels: PropTypes.array.isRequired,
+  //channels: PropTypes.array.isRequired,
   activeChannel: PropTypes.string.isRequired
 }
 
 function mapStateToProps(state) {
   return {
+      //channels: state.channels.data,
       messages: state.messages.data,
-      channels: state.channels.data,
       activeChannel: state.activeChannel.name,
       //user: state.auth.user,
-      user: 'Test-User',
-      typers: state.typers,
+      //user: 'Test-User',
       screenWidth: state.environment.screenWidth
   }
 }

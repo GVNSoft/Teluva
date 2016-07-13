@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 
 const ChannelListItem = (props) => {
   const { onClick, channel } = props;
-  console.log(props);
 
   return (
     <Link to='/chat'>
