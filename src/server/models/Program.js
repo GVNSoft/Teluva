@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var programSchema = mongoose.Schema({
   channelName: String,
-  ProgramName: String,
+  programName: String,
   startTime: Date
 });
 

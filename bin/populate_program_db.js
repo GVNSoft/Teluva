@@ -1,71 +1,32 @@
+'use strict'
+
 var async = require('async');
 var mongoose = require('mongoose');
 require(process.cwd() + '/lib/connection');
 
 var Program = mongoose.model('Program');
 
-var programs = [
-	{
-		  channelName: 'ch_pm6_1',
-		  ProgramName: 'KBS2',
-		  startTime: 1468486800000
-	},
-	{
-		  channelName: 'ch_pm6_2',
-		  ProgramName: 'KBS2',
-		  startTime: 1468488600000
-	},
-	{
-		  channelName: 'ch_pm7_1',
-		  ProgramName: 'KBS2',
-		  startTime: 1468490400000
-	},
-	{
-		  channelName: 'ch_pm7_2',
-		  ProgramName: 'KBS2',
-		  startTime: 1468492200000
-	},
-	{
-		  channelName: 'ch_pm8_1',
-		  ProgramName: 'KBS2',
-		  startTime: 1468494000000
-	},
-	{
-		  channelName: 'ch_pm8_2',
-		  ProgramName: 'KBS2',
-		  startTime: 1468495800000
-	},
-	{
-		  channelName: 'ch_pm9_1',
-		  ProgramName: 'KBS2',
-		  startTime: 1468497600000
-	},
-	{
-		  channelName: 'ch_pm9_2',
-		  ProgramName: 'KBS2',
-		  startTime: 1468499400000
-	},
-	{
-		  channelName: 'ch_pm10_1',
-		  ProgramName: 'KBS2',
-		  startTime: 1468501200000
-	},
-	{
-		  channelName: 'ch_pm10_2',
-		  ProgramName: 'KBS2',
-		  startTime: 1468503000000
-	},
-	{
-		  channelName: 'ch_pm11_1',
-		  ProgramName: 'KBS2',
-		  startTime: 1468504800000
-	},
-	{
-		  channelName: 'ch_pm11_2',
-		  ProgramName: 'KBS2',
-		  startTime: 1468506600000
-	},
-];
+//make programs that contains 3days of programs from today 00:00.
+var fromTime = new Date();
+fromTime. setHours(0,0,0,0);
+
+var programs = [];
+for (let i=0; i < 24 * 2 * 3; i++) {
+	//example : ch_23_30+3days (Program at 23:30, 3days later from now.)
+	let minutes = i%2 ? '00' : '30';
+	let programName = 
+		'pr_' + Math.floor(i/2)%24 + ':' + minutes + '+' + Math.ceil(i/48) + 'days';
+
+	programs[i] = {
+		channelName : 'KBS2',
+		programName: programName,
+		startTime: fromTime
+	};
+
+	fromTime = new Date(fromTime.getTime() + 30 * 60000);	//Add 30 Minutes
+}
+
+console.log(programs);
 
 var deletePrograms = function (callback) { 
 	console.info('Deleting Programs');
