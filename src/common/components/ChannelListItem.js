@@ -7,13 +7,13 @@ const ChannelListItem = (props) => {
   const { onClick, channel } = props;
 
   return (
-    <Link to='/chat'>
-        <li style={{textAlign: 'left', cursor: 'pointer', marginLeft: '2em'}}
-               onClick= {() => onClick(channel)}>
-          <h4> { channel.name } </h4> 
-          <h5> { channel.onair } </h5>
-        </li>
-    </Link>
+    <li style={{textAlign: 'left', cursor: 'pointer', marginLeft: '2em'}}>
+         <Link to='/chat' onClick= {() => onClick(channel)}>
+              <h4> { channel.name } </h4> 
+              <h5> { channel.onair } </h5>
+         </Link>
+    </li>
+    
    );
 
   /*const { channel: selectedChannel, onClick, channel } = props;

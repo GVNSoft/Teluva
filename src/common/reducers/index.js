@@ -8,11 +8,13 @@ import userValidation from './userValidation';
 import environment from './environment';
 import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form'
+import activeProgram from './activeProgram';
 
 const rootReducer = combineReducers({
   messages,
   channels,
   activeChannel,
+  activeProgram,
   auth,
   typers,
   welcomePage,

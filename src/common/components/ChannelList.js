@@ -20,6 +20,7 @@ export default class ChannelList extends Component {
          //dispatch(actions.createChannel(newChannel));
          //socket.emit('new channel', newChannel);
          dispatch(actions.changeChannel(newChannel));
+         dispatch(actions.changeProgram(newChannel.onair));
      }
 
     render() {

@@ -20,9 +20,10 @@ const tmpUser =
 
 class ChatContainer extends Component {
   componentWillMount() {
-    const { dispatch, activeChannel } = this.props;
+    const { dispatch, activeChannel, activeProgram } = this.props;
 
     console.log('[Chat_Container] activeChannel : ', activeChannel);
+    console.log('[Chat_Container] activeProgram : ', activeProgram);
     /*if(!user.username) {
       dispatch(receiveAuth());
     }*/
@@ -39,7 +40,8 @@ ChatContainer.propTypes = {
   //user: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   //channels: PropTypes.array.isRequired,
-  activeChannel: PropTypes.string.isRequired
+  activeChannel: PropTypes.string.isRequired,
+  activeProgram: PropTypes.string.isRequired
 }
 
 function mapStateToProps(state) {
@@ -47,6 +49,7 @@ function mapStateToProps(state) {
       //channels: state.channels.data,
       messages: state.messages.data,
       activeChannel: state.activeChannel.name,
+      activeProgram: state.activeProgram.name,
       //user: state.auth.user,
       //user: 'Test-User',
       screenWidth: state.environment.screenWidth

@@ -54,6 +54,13 @@ export function changeChannel(channel) {
   };
 }
 
+export function changeProgram(ProgramName) {
+  return {
+    type: types.CHANGE_PROGRAM,
+    ProgramName
+  };
+}
+
 // NOTE:Data Fetching actions
 
 export function welcomePage(username) {

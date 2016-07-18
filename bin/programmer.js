@@ -69,7 +69,7 @@ function updateOnAirProgram(programId) {
 		}
 
 		let query = { 'name' : result[0].channelName };
-		let updateData = { 'onair' : result.programName };
+		let updateData = { 'onair' : result[0].programName };
 
 		Channel.update(query, updateData, function(err, data) {
 		      if(err) {

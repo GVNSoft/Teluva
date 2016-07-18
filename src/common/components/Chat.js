@@ -14,6 +14,7 @@ export default class Chat extends Component {
     dispatch: PropTypes.func.isRequired,
     //channels: PropTypes.array.isRequired,
     activeChannel: PropTypes.string.isRequired,
+    activeProgram: PropTypes.string.isRequired,
     //typers: PropTypes.array.isRequired,
     socket: PropTypes.object.isRequired
   };
@@ -77,7 +78,7 @@ export default class Chat extends Component {
   }
 
   render() {
-    const { socket, activeChannel, dispatch, user, screenWidth, messages} = this.props;
+    const { socket, activeChannel, dispatch, user, screenWidth, messages, activeProgram} = this.props;
     const filteredMessages = messages.filter(message => message.channelID === activeChannel);
     const username = this.props.user.username;
     const dropDownMenu = (
@@ -120,7 +121,7 @@ export default class Chat extends Component {
         <div className="main">
           <header style={{background: '#FFFFFF', color: 'black', flexGrow: '0', order: '0', fontSize: '2.3em', paddingLeft: '0.2em'}}>
             <div>
-            {activeChannel}
+            {activeChannel} {' :: '} {activeProgram}
             </div>
           </header>
 
