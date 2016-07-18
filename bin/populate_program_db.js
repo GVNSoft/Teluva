@@ -11,11 +11,12 @@ var fromTime = new Date();
 fromTime. setHours(0,0,0,0);
 
 var programs = [];
-for (let i=0; i < 24 * 2 * 3; i++) {
+let minutes = 0;
+//Every 5 Minutes (12 times per an hour) , it makes programs for 3 days.
+for (let i=0; i < 24 * 12 * 3; i++) {
 	//example : ch_23_30+3days (Program at 23:30, 3days later from now.)
-	let minutes = i%2 ? '00' : '30';
 	let programName = 
-		'pr_' + Math.floor(i/2)%24 + ':' + minutes + '+' + Math.ceil(i/48) + 'days';
+		'pr_' + Math.floor(i/2)%24 + ':' + minutes + '+' + Math.ceil(i/(24 * 12)) + 'days';
 
 	programs[i] = {
 		channelName : 'KBS2',
@@ -23,7 +24,8 @@ for (let i=0; i < 24 * 2 * 3; i++) {
 		startTime: fromTime
 	};
 
-	fromTime = new Date(fromTime.getTime() + 30 * 60000);	//Add 30 Minutes
+	fromTime = new Date(fromTime.getTime() + 5 * 60000);	//Add 5 Minutes
+	minutes = (minutes+5) % 60;
 }
 
 console.log(programs);

@@ -3,6 +3,7 @@
 let mongoose = require('mongoose');
 require(process.cwd() + '/lib/connection');
 let Program = mongoose.model('Program');
+let Channel = mongoose.model('Channel');
 
 //Polyfill for contains function.
 Array.prototype.contains = function(element) {
@@ -27,12 +28,12 @@ function retrievePrograms(date) {
 	let toTime = addDays(fromTime, 1);
 
 	//We should retrieve programs started during now~tomorrow.
-	Program.find( {"startTime": {"$gte": fromTime, "$lt": toTime}}, function(err, data) {
+	Program.find( {"startTime": {"$gte": fromTime, "$lt": toTime}}, function(err, result) {
 		if(err) {
 			console.log(err);
 			return;
 		}
-		setOnAirTimeout(data);
+		setOnAirTimeout(result);
 	});
 }
 
@@ -45,54 +46,43 @@ function setOnAirTimeout(programs) {
 			
 			let inactiveTime = programs[i].startTime - new Date();
 
-			console.log(programs[i]._id + ' : ' + inactiveTime);
+			console.log(programs[i].programName + ' ' + inactiveTime);
 
 			//setTimeout for this program
 			let timer = setTimeout(function() { 
-				updateOnAirProgram(programs[i]._id);
+				updateOnAirProgram(programs[i]._id);	//It passes the program id only for performance.
 			}, inactiveTime);
 
 			setPrograms.push(programs[i]._id);
 		}
-
 	}
-
-	//console.log(setPrograms);
-	//console.log(setPrograms.contains('5788de69f8b596ae405b2f8811'));
 }
 
 function updateOnAirProgram(programId) {
+	//DB update for onAir Program
 	console.log('updateOnAirProgram is called with ' + programId);
+
+	Program.find( {"_id": programId}, function(err, result) {
+		if(err) {
+			console.log(err);
+			return;
+		}
+
+		let query = { 'name' : result[0].channelName };
+		let updateData = { 'onair' : result.programName };
+
+		Channel.update(query, updateData, function(err, data) {
+		      if(err) {
+		        console.log(err);
+		        return;
+		      } else if (data.nModified == 1) {
+		      	console.log("Succesfully updated onAir Program(" + result[0].programName + ")");
+		      } else {
+			console.log("Update is OK but nothing modified.");
+		      }
+		});
+	});
 }
 
 var date = new Date();
 var programs = retrievePrograms(date.getDate());
-
-
-
-/*
-*************** Reference Codes ***************
-
-setTimeout(function() {
-    postinsql(topicId);
-}, 4000)
-
-
-
-Channel.find({},{name: 1, onair:1, _id:0}, function(err, data) {
-  if(err) {
-    console.log(err);
-    return res.status(500).json({msg: 'internal server error'});
-  }
-  res.json(data);
-});
-
-var dtstr = "26-02-2012";
-var result = new Date(dtstr.split("-").reverse().join("-")).getTime();
-
-now = new Date();
-tomorrow = addDays(now, 1);
-
-console.log(now);
-console.log(tomorrow);
-*/
