@@ -41,7 +41,7 @@ ChatContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
   //channels: PropTypes.array.isRequired,
   activeChannel: PropTypes.string.isRequired,
-  activeProgram: PropTypes.string.isRequired
+  activeProgram: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
@@ -49,7 +49,7 @@ function mapStateToProps(state) {
       //channels: state.channels.data,
       messages: state.messages.data,
       activeChannel: state.activeChannel.name,
-      activeProgram: state.activeProgram.name,
+      activeProgram: state.activeProgram,
       //user: state.auth.user,
       //user: 'Test-User',
       screenWidth: state.environment.screenWidth

@@ -7,23 +7,38 @@ var Channel = mongoose.model('Channel');
 var channels = [
 	{
 		name: 'KBS1',
-		onair: 'KBS News'
+		onair: {
+			programName : 'Infinite Challenge',
+			programId : 'pro0'
+		}
 	},
 	{
 		name: 'KBS2',
-		onair: 'Happy Together'
+		onair: {
+			programName : 'Infinite Challenge2',
+			programId : 'pro1'
+		}
 	},
 	{
 		name: 'MBC',
-		onair: 'Infinite Challenge'
+		onair: {
+			programName : 'Infinite Challenge3',
+			programId : 'pro2'
+		}
 	},
 	{
 		name: 'SBS',
-		onair: 'Radio Star'
+		onair: {
+			programName : 'Infinite Challenge4',
+			programId : 'pro3'
+		}
 	},
 	{
 		name: 'JTBC',
-		onair: 'News Room'
+		onair: {
+			programName : 'Infinite Challenge5',
+			programId : 'pro4'
+		}
 	}
 ];
 

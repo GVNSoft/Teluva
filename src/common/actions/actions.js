@@ -54,10 +54,11 @@ export function changeChannel(channel) {
   };
 }
 
-export function changeProgram(ProgramName) {
+export function changeProgram(program) {
+  console.log('changeProgram : %o', program);
   return {
     type: types.CHANGE_PROGRAM,
-    ProgramName
+    program
   };
 }
 

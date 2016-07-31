@@ -14,7 +14,7 @@ export default class Chat extends Component {
     dispatch: PropTypes.func.isRequired,
     //channels: PropTypes.array.isRequired,
     activeChannel: PropTypes.string.isRequired,
-    activeProgram: PropTypes.string.isRequired,
+    activeProgram: PropTypes.object.isRequired,
     //typers: PropTypes.array.isRequired,
     socket: PropTypes.object.isRequired
   };
@@ -23,13 +23,18 @@ export default class Chat extends Component {
     super(props, context);
   }
 
-  componentDidMount() {
-    const { socket, user, dispatch, activeChannel } = this.props;
+  componentWillUnmount() {
+    const { socket, activeChannel, activeProgram } = this.props;
+    socket.emit('leave_program', activeProgram.id);
+  }
 
-    console.log('[Chat] activeChannel : ' + activeChannel);
+  componentDidMount() {
+    const { socket, user, dispatch, activeChannel, activeProgram } = this.props;
+
+    console.log(this.props);
 
     socket.emit('chat mounted', user);
-    socket.emit('join channel', activeChannel);
+    socket.emit('join_program', activeProgram.id);
     
     //Triggering when other user sends message
     socket.on('new bc message', function(msg ) {
@@ -121,7 +126,7 @@ export default class Chat extends Component {
         <div className="main">
           <header style={{background: '#FFFFFF', color: 'black', flexGrow: '0', order: '0', fontSize: '2.3em', paddingLeft: '0.2em'}}>
             <div>
-            {activeChannel} {' :: '} {activeProgram}
+            {activeChannel} {' :: '} {activeProgram.name}
             </div>
           </header>
 

@@ -11,6 +11,7 @@ class ChannelContainer extends Component {
     dispatch(actions.fetchChannels());
 
   }
+
   render() {
     return (
       <ChannelList {...this.props} />

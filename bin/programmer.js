@@ -58,11 +58,11 @@ function setOnAirTimeout(programs) {
 	}
 }
 
-function updateOnAirProgram(programId) {
+function updateOnAirProgram(program_Id) {
 	//DB update for onAir Program
-	console.log('updateOnAirProgram is called with ' + programId);
+	console.log('updateOnAirProgram is called with ' + program_Id);
 
-	Program.find( {"_id": programId}, function(err, result) {
+	Program.find( {"_id": program_Id}, function(err, result) {
 		if(err) {
 			console.log(err);
 			return;

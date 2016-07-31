@@ -7,8 +7,10 @@ const initialState = {
 export default function activeProgram(state = initialState, action) {
   switch (action.type) {
   case CHANGE_PROGRAM:
+  console.log("action : %o", action);
     return {
-      name: action.ProgramName
+      name: action.program.programName,
+      id: action.program.programId
     };
 
   default:

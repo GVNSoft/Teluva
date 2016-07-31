@@ -21,6 +21,7 @@ for (let i=0; i < 24 * 12 * 3; i++) {
 	programs[i] = {
 		channelName : 'KBS2',
 		programName: programName,
+		programId : 'pro' + i,
 		startTime: fromTime
 	};
 

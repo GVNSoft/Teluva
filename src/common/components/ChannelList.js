@@ -14,6 +14,10 @@ export default class ChannelList extends Component {
         
      }
 
+    componentWillUpdate( nextProps, nextState) {
+      
+     }
+
      changeActiveChannel(newChannel) {
         const { dispatch } = this.props;
 
@@ -26,11 +30,13 @@ export default class ChannelList extends Component {
     render() {
       const { channels } = this.props;
 
+      console.log(channels);
+
       return (
         <div>
             <h1>Channel List</h1>
             <ul style={{display: 'flex', flexDirection: 'column', listStyle: 'none', margin: '0', overflowY: 'auto', padding: '0'}}>
-              {channels.map(channel =>
+              {channels.map(channel => 
                 <ChannelListItem
                   style={{paddingLeft: '0.8em', background: '#2E6DA4', height: '0.7em'}}
                   channel={channel}

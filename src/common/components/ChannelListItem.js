@@ -10,7 +10,8 @@ const ChannelListItem = (props) => {
     <li style={{textAlign: 'left', cursor: 'pointer', marginLeft: '2em'}}>
          <Link to='/chat' onClick= {() => onClick(channel)}>
               <h4> { channel.name } </h4> 
-              <h5> { channel.onair } </h5>
+              <h5> { channel.onair.programName } </h5>
+              <h5> { channel.onair.userCounter } </h5>
          </Link>
     </li>
     
