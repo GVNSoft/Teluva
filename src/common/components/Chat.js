@@ -139,7 +139,8 @@ export default class Chat extends Component {
           </ul>
 
           {/* Text Input form */}
-          <MessageComposer socket={socket} activeChannel={activeChannel} user={user} onSave={::this.handleSave} />
+          <MessageComposer socket={socket} activeChannel={activeChannel}
+                                  activeProgramId={activeProgram.id} user={user} onSave={::this.handleSave} />
         </div>
 
 {/*        <footer style={{fontSize: '1em', position: 'fixed', bottom: '0.2em', left: '21.5rem', color: '#000000', width: '100%', opacity: '0.5'}}>

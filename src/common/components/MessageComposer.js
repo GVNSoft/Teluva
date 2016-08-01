@@ -7,6 +7,7 @@ export default class MessageComposer extends Component {
 
   static propTypes = {
     activeChannel: PropTypes.string.isRequired,
+    activeProgramId : PropTypes.string.isRequired,
     onSave: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     socket: PropTypes.object.isRequired
@@ -26,6 +27,7 @@ export default class MessageComposer extends Component {
       var newMessage = {
         id: `${Date.now()}${uuid.v4()}`,
         channelID: this.props.activeChannel,
+        activeProgramId : this.props.activeProgramId,
         text: text,
         user: user,
         time: moment.utc().format('lll')

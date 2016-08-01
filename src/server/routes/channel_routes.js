@@ -24,6 +24,7 @@ module.exports = function(router) {
 
   router.get('/channels', function(req, res) {
 
+    console.log("Channel is loaded by someone");
     // Use lean() to get Json type data instead of a Mongoose object.
     Channel.find({},{name: 1, onair:1, _id:0}).lean().exec(function(err, data) {
       if(err) {
@@ -43,7 +44,6 @@ module.exports = function(router) {
       });
 
       res.send(data);
-      console.log("Res data : %o", data);
     });
   });
 

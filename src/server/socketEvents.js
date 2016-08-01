@@ -8,24 +8,24 @@ exports = module.exports = function(io) {
       socket.emit('receive socket', socket.id)
     })
     socket.on('leave_program', function(programid) {
-      console.log("socket.on programid channel : " + programid);
+      console.log("Someone leave program  : " + programid);
       socket.leave(programid)
       socket.joinedProgramId = null;
       userCounter[programid]--;
     })
     socket.on('join_program', function(programid) {
       socket.join(programid)
-      console.log("socket.on join programid : " + programid);
+      console.log("Someone join program : " + programid);
       if (userCounter[programid]) {
         userCounter[programid]++;
       } else {
         userCounter[programid] = 1;
       }
       socket.joinedProgramId = programid;
-      console.log("join and userCounter : " + userCounter[programid] );
+      //console.log("join and userCounter : " + userCounter[programid] );
     })
     socket.on('new message', function(msg) {
-      socket.broadcast.to(msg.channelID).emit('new bc message', msg);
+      socket.broadcast.to(msg.activeProgramId).emit('new bc message', msg);
     });
     socket.on('new channel', function(channel) {
       socket.broadcast.emit('new channel', channel)
@@ -40,6 +40,7 @@ exports = module.exports = function(io) {
       socket.broadcast.to(socketID).emit('receive private channel', channel);
     });
     socket.on('disconnect', function() {
+      console.log("Someone is disconnected.");
       // If socket is disconnected and socket owner is in the program chat room,
       // it decreases the numberof users(userCounter) in the room.
       if (socket.joinedProgramId) {
