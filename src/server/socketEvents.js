@@ -10,6 +10,7 @@ exports = module.exports = function(io) {
     socket.on('leave_program', function(programid) {
       console.log("socket.on programid channel : " + programid);
       socket.leave(programid)
+      socket.joinedProgramId = null;
       userCounter[programid]--;
     })
     socket.on('join_program', function(programid) {
