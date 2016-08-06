@@ -1,5 +1,5 @@
 'use strict'
-
+// FIgHTING
 let mongoose = require('mongoose');
 require(process.cwd() + '/lib/connection');
 let Program = mongoose.model('Program');
@@ -43,13 +43,13 @@ function setOnAirTimeout(programs) {
 	//console.log(programs);
 	for (let i in programs) {
 		if (!setPrograms.contains(programs[i]._id) && typeof programs[i]._id != 'undefined') {
-			
+
 			let inactiveTime = programs[i].startTime - new Date();
 
 			console.log(programs[i].programName + ' ' + inactiveTime);
 
 			//setTimeout for this program
-			let timer = setTimeout(function() { 
+			let timer = setTimeout(function() {
 				updateOnAirProgram(programs[i]._id);	//It passes the program id only for performance.
 			}, inactiveTime);
 
